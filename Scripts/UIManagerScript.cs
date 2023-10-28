@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenuScript : MonoBehaviour
+public class UiManager : MonoBehaviour
 {
     public GameObject optionsPanel;
     public GameObject GatchaPanel;
+    [SerializeField]  public MarketScript market;
   
 
     private void Start()
@@ -33,24 +34,17 @@ public class MainMenuScript : MonoBehaviour
 
     public void Buygatcha()
     {
-        /* 
-        if(money >= price)
-        {
-            //start gatch (call script gatcha && play sound correct)
-            OpenGatchaP();
-        }
-        else
-        {
-            //denied gatch (call script gatcha && play sound false)
-
-        }
-        */
+        market.BuySkill();
     }
-    /*
-     public void BuyHeal()
-     public void BuyAp()
-    */
 
+    public void BuyHeal()
+    {
+        market.BuyHealTree();
+    }
+    public void BuyAp()
+    {
+        market.BuyAttackPower();
+    }
 
     public void OpenGatchaP()
     {
