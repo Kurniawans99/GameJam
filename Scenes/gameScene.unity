@@ -3220,9 +3220,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1952033189}
     - target: {fileID: 2664253771006517987, guid: ae4186cb01bd3554ab16aab361968678, type: 3}
+      propertyPath: sfxWrong
+      value: 
+      objectReference: {fileID: 8300000, guid: 7e4c906fb10ada748b3fd775f29d0754, type: 3}
+    - target: {fileID: 2664253771006517987, guid: ae4186cb01bd3554ab16aab361968678, type: 3}
       propertyPath: sfxToggle
       value: 
       objectReference: {fileID: 1989583392}
+    - target: {fileID: 2664253771006517987, guid: ae4186cb01bd3554ab16aab361968678, type: 3}
+      propertyPath: sfxCorrect
+      value: 
+      objectReference: {fileID: 8300000, guid: 0f784e69e1393e94c8efadf8fd5d1c04, type: 3}
     - target: {fileID: 2966753083720953380, guid: ae4186cb01bd3554ab16aab361968678, type: 3}
       propertyPath: bgmToggle
       value: 
