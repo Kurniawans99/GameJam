@@ -46,6 +46,16 @@ public class UiManager : MonoBehaviour
         market.BuyAttackPower();
     }
 
+    public void gatchaKeep()
+    {
+        market.keep();
+    }
+
+    public void gatchaClose ()
+    {
+        market.threw();
+        CloseGatchaP();
+    }
     public void OpenGatchaP()
     {
         GatchaPanel.SetActive(true);

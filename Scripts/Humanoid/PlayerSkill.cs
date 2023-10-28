@@ -13,6 +13,31 @@ public class PlayerSkill : MonoBehaviour
         Instance = this;
     }
 
+    public void UpdateSkills(string nameSkill)
+    {
+        
+        switch (nameSkill)
+        {
+            case "doubleArrow":
+                doubleArrow = true;
+                break;
+           /* case "sniperArrow":
+                sniperArrow = true;
+                break;*/
+            case "freezeArrow":
+                freezeArrow = true;
+                break;
+            case "poisonArrow":
+                poisonArrow = true;
+                break;
+            /*case "firerateArrow":
+                firerateArrow = true;
+                break;*/
+            default:
+                Debug.Log("ERROR");
+                break;
+        }
+    }
 
     public void SlowEnemy(Enemy enemy, float percentageSlow)
     {

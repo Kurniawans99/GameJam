@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MarketScript : MonoBehaviour
 {
@@ -9,8 +10,19 @@ public class MarketScript : MonoBehaviour
     [SerializeField] public AttackPower attackPower;
     [SerializeField] public Coin coins;
     [SerializeField] public Tower tree;
+    [SerializeField] public PlayerSkill playerSkill;
+
 
     [SerializeField] public AudioManager sfx;
+    [SerializeField] public Image gatchaImage;
+
+    [SerializeField] public Image slotImage;
+
+    private string nameSkill;
+    private Sprite newSprite;
+    private bool decisionSkill;
+
+
 
 
     public static event EventHandler OnPriceAPChanged;
@@ -80,7 +92,10 @@ public class MarketScript : MonoBehaviour
 
             // Increase Attack Power
             tree.Heal(UnityEngine.Random.Range(10, 75));
-            OnPriceAPChanged?.Invoke(this, EventArgs.Empty);
+
+            decimal changeCost = healCost * 1 / 2;
+            healCost = (int)(healCost + Math.Ceiling(changeCost));
+            OnPriceHealChanged?.Invoke(this, EventArgs.Empty);
 
         }
         else
@@ -90,17 +105,73 @@ public class MarketScript : MonoBehaviour
     }
 
 
-    /// <summary>
-    /// 
-    /// </summary>
+    public void keep()
+    {
+        if (decisionSkill)
+        {
+            playerSkill.UpdateSkills(nameSkill);
+            //update slots
+            slotImage.sprite = newSprite;
+        }
+    }
+
+
+    public void threw()
+    {
+        nameSkill = null;
+        newSprite = null;
+    }
+
+  
+
     public void BuySkill()
     {
+
         int playerCoins = coins.GetCoin();
 
         if (playerCoins >= healCost)
         {
             sfx.Play_Correct();
 
+
+            int randomnumber = UnityEngine.Random.Range(1, 5);
+
+            switch (randomnumber)
+            {
+                case 1:
+                    nameSkill = "doubleArrow";
+                    newSprite = Resources.Load<Sprite>("Assets/AssetS/2D/doubleArrow.png");
+                    break;
+                case 2:
+                    nameSkill = "sniperArrow";
+                    newSprite = Resources.Load<Sprite>("Assets/AssetS/2D/sniperArrow.png");
+
+                    break;
+                case 3:
+                    nameSkill = "freezeArrow";
+                    newSprite = Resources.Load<Sprite>("Assets/AssetS/2D/freezeArrow.png");
+
+                    break;
+                case 4:
+                    nameSkill = "poisonArrow";
+                    newSprite = Resources.Load<Sprite>("Assets/AssetS/2D/poisonArrow.png");
+
+                    break;
+                case 5:
+                    nameSkill = "firerateArrow";
+                    newSprite = Resources.Load<Sprite>("Assets/AssetS/2D/firerateArrow.png");
+                    break;
+
+                default:
+                    break;
+             
+            }
+
+            gatchaImage.sprite = newSprite;
+            uiManager.OpenGatchaP();
+      
+            decimal changeCost = skillCost * 1 / 2;
+            skillCost = (int)(skillCost + 10 + Math.Ceiling(changeCost));
             OnPriceSkillChanged?.Invoke(this, EventArgs.Empty);
 
         }
