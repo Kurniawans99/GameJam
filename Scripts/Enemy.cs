@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     public static event EventHandler OnEnemyDeath;
+    public event EventHandler OnHit;
     public Transform target;
 
     public enum State
@@ -28,6 +29,7 @@ public class Enemy : MonoBehaviour
     public void TakenDamage(float damage)
     {
         health -= damage;
+        OnHit?.Invoke(this, EventArgs.Empty);
         if (health <= 0)
         {
             OnEnemyDeath?.Invoke(this, EventArgs.Empty);
@@ -36,6 +38,7 @@ public class Enemy : MonoBehaviour
     }
     public void Burning(PlayerSkill skill, float burnDamage)
     {
+        Debug.Log("oi");
         if (poisonCoroutine != null)
         {
             StopCoroutine(poisonCoroutine);

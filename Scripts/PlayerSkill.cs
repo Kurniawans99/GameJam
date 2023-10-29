@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerSkill : MonoBehaviour
 {
     [HideInInspector] public static PlayerSkill Instance { get; private set; }
-    private bool freezeArrow = false;
-    private bool poisonArrow = false;
-    private bool doubleArrow = false;
+    public bool freezeArrow = false;
+    public bool poisonArrow = true;
+    public bool doubleArrow = false;
     private void Awake()
     {
         Instance = this;
