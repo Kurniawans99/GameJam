@@ -33,12 +33,12 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             OnEnemyDeath?.Invoke(this, EventArgs.Empty);
+            EnemySpawn.Instance.EnemyDecrease(1);
             Destroy(gameObject);
         }
     }
     public void Burning(PlayerSkill skill, float burnDamage)
     {
-        Debug.Log("oi");
         if (poisonCoroutine != null)
         {
             StopCoroutine(poisonCoroutine);
