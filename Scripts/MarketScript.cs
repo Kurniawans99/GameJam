@@ -18,6 +18,7 @@ public class MarketScript : MonoBehaviour
 
     [SerializeField] public Image slotImage;
 
+    string path;
     private string nameSkill;
     private Sprite newSprite;
     private bool decisionSkill;
@@ -109,15 +110,17 @@ public class MarketScript : MonoBehaviour
     {
         if (decisionSkill)
         {
-            playerSkill.UpdateSkills(nameSkill);
-            //update slots
+           // playerSkill.UpdateSkills(nameSkill);
             slotImage.sprite = newSprite;
+            threw();
         }
     }
 
 
     public void threw()
     {
+        decisionSkill = false;
+
         nameSkill = null;
         newSprite = null;
     }
@@ -129,45 +132,55 @@ public class MarketScript : MonoBehaviour
 
         int playerCoins = coins.GetCoin();
 
-        if (playerCoins >= healCost)
+        if (playerCoins >= skillCost)
         {
             sfx.Play_Correct();
+            coins.DeductCoins(skillCost);
 
 
-            int randomnumber = UnityEngine.Random.Range(1, 5);
+            int randomnumber = UnityEngine.Random.Range(1, 100);
+            Debug.Log(randomnumber);
+
 
             switch (randomnumber)
             {
-                case 1:
+                case >= 1 and <= 10: // 10% chance
                     nameSkill = "doubleArrow";
-                    newSprite = Resources.Load<Sprite>("Assets/AssetS/2D/doubleArrow.png");
+                    path = "Assets/AssetS/2D/doubleArrow.png";
                     break;
-                case 2:
+                case >= 11 and <= 40: // 30% chance (increased from 30)
                     nameSkill = "sniperArrow";
-                    newSprite = Resources.Load<Sprite>("Assets/AssetS/2D/sniperArrow.png");
-
+                    path = "Assets/AssetS/2D/sniperArrow.png";
                     break;
-                case 3:
+                case >= 41 and <= 70: // 30% chance
                     nameSkill = "freezeArrow";
-                    newSprite = Resources.Load<Sprite>("Assets/AssetS/2D/freezeArrow.png");
-
+                    path = "Assets/AssetS/2D/freezeArrow.png";
                     break;
-                case 4:
+                case >= 71 and <= 85: // 15% chance
                     nameSkill = "poisonArrow";
-                    newSprite = Resources.Load<Sprite>("Assets/AssetS/2D/poisonArrow.png");
-
+                    path = "Assets/AssetS/2D/poisonArrow.png";
                     break;
-                case 5:
+                case >= 86 and <= 100: // 15% chance
                     nameSkill = "firerateArrow";
-                    newSprite = Resources.Load<Sprite>("Assets/AssetS/2D/firerateArrow.png");
+                    path = "Assets/AssetS/2D/firerateArrow.png";
                     break;
-
                 default:
                     break;
-             
             }
 
-            gatchaImage.sprite = newSprite;
+            decisionSkill = true;
+            newSprite = UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite>(path);
+
+
+            if (newSprite != null)
+            {
+                gatchaImage.sprite = newSprite;
+                Debug.Log("Image changed successfully.");
+            }
+            else
+            {
+                Debug.LogWarning("Failed to load sprite.");
+            }
             uiManager.OpenGatchaP();
       
             decimal changeCost = skillCost * 1 / 2;

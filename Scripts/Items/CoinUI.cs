@@ -10,7 +10,7 @@ public class CoinUI : MonoBehaviour
     [SerializeField]private TextMeshProUGUI coinText;
     private void Start()
     {
-        coinText.text = "0";
+        coinText.text = coin.GetCoin().ToString();
         Coin.OnCoinChanged += Coin_OnChange;
     }
 

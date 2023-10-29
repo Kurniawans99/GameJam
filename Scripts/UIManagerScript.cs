@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,18 +8,28 @@ public class UiManager : MonoBehaviour
 {
     public GameObject optionsPanel;
     public GameObject GatchaPanel;
+    public GameObject endTabPanel;
+
     [SerializeField]  public MarketScript market;
-  
+
+   // private bool isGamePaused;
+
+
+   
 
     private void Start()
     {
-        Scene currentScene = SceneManager.GetActiveScene();
+        GameManager.OnGameEnded += gameEnd;
 
+        Scene currentScene = SceneManager.GetActiveScene();
         optionsPanel.SetActive(false);
         if(currentScene.name == "gameScene")
         {
             GatchaPanel.SetActive(false);
+            endTabPanel.SetActive(false);
+
         }
+
 
 
     }
@@ -84,10 +95,31 @@ public class UiManager : MonoBehaviour
 
     public void ReplayGame()
     {
-        //replay game
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void ResumeGame()
     {
-        //resume
+        Time.timeScale = 1.0f;
     }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0.0f;
+    }
+    public void HomeGame()
+    {
+        SceneManager.LoadScene("mainScene");
+    }
+
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI playTimeText;
+    public TextMeshProUGUI highScoreText;
+
+    public void gameEnd(int score, string playTime, int highScore)
+    {
+        endTabPanel.SetActive(true);
+        Time.timeScale = 0.0f;
+
+    }
+
 }

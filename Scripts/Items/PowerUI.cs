@@ -10,7 +10,7 @@ public class PowerUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI apText;
     private void Start()
     {
-        apText.text = "0";
+        apText.text = attackPower.GetAttackPower().ToString();
         AttackPower.OnPowerChanged += Power_OnChange;
     }
 

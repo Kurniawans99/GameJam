@@ -6,7 +6,7 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
 
-    private int playerCoin = 0;
+    private int playerCoin = 100;
     public static event EventHandler OnCoinChanged;
 
     private void Start()
