@@ -7,16 +7,16 @@ using UnityEngine.AI;
 
 public class Arrow : MonoBehaviour
 {
+    public static event EventHandler OnEnemyHit;
     private Rigidbody rb;
-    public Vector3 target;
     private float speed;
     private float damage;
     private float burnDamage;
-    private Vector3 direction;
+    private float arrowTimer;
+    private float arrowTimerMax = 5f;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        target = Player.Instance.targetPos;
     }
 
     private void Start()
@@ -24,15 +24,17 @@ public class Arrow : MonoBehaviour
         speed = Bow.Instance.speed;
         damage = Bow.Instance.damage;
         burnDamage = Bow.Instance.burnDamage;
-        direction = (target - transform.position).normalized;
+        rb.AddForce(transform.forward * -speed, ForceMode.Impulse);
+
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        rb.AddForce(direction * speed, ForceMode.Impulse);
-
-        transform.LookAt(target);
-        transform.Rotate(0, 180, 0);
+        arrowTimer += Time.deltaTime;
+        if (arrowTimer > arrowTimerMax)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void SkillActive(PlayerSkill skill, Enemy enemy)
@@ -47,6 +49,7 @@ public class Arrow : MonoBehaviour
     {
         if (other.transform.TryGetComponent(out Enemy enemy))
         {
+            OnEnemyHit?.Invoke(this, EventArgs.Empty);
             enemy.TakenDamage(damage);
             SkillActive(PlayerSkill.Instance, enemy);
             Destroy(gameObject);

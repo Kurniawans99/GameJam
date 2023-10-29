@@ -9,30 +9,45 @@ public class Player : MonoBehaviour
     [HideInInspector] public Vector3 targetPos;
     [SerializeField] private GameInput gameInput;
     [SerializeField] private Camera cam;
+    private const string PLAYER_SHOOT = "Shoot";
+    private Animator animator;
 
 
     private void Awake()
     {
         Instance = this;
+        animator = GetComponent<Animator>();
     }
     private void Start()
     {
         gameInput.OnClick += GameInputOnClick;
     }
 
-    private void GameInputOnClick(object sender, GameInput.OnClickArgs e)
+    private void Update()
     {
-        Ray ray = cam.ScreenPointToRay(e.mousePos);
+        HandleRotation();
 
-
+    }
+    private void HandleRotation()
+    {
+        Ray ray = cam.ScreenPointToRay(gameInput.GetMousePosition());
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            if (hit.transform.TryGetComponent(out Enemy enemy))
-            {
-                targetPos = enemy.transform.position;
-                Bow.Instance.Fire();
-            }
+            Vector3 point = hit.point;
+            point.y = transform.position.y;
+            transform.LookAt(point);
         }
+    }
+
+    private void GameInputOnClick(object sender, EventArgs e)
+    {
+        animator.SetTrigger(PLAYER_SHOOT);
+
+    }
+    public void Fire()
+    {
+        Bow.Instance.Fire();
+
     }
 
 

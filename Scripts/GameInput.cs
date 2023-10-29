@@ -4,11 +4,8 @@ using UnityEngine.InputSystem;
 
 public class GameInput : MonoBehaviour
 {
-    public event EventHandler<OnClickArgs> OnClick;
-    public class OnClickArgs : EventArgs
-    {
-        public Vector3 mousePos;
-    }
+    public event EventHandler OnClick;
+
     private PlayerInput playerInput;
     private Mouse mouse;
 
@@ -26,11 +23,7 @@ public class GameInput : MonoBehaviour
 
     private void PlayerInput_Click(InputAction.CallbackContext context)
     {
-        Vector3 pos = mouse.position.ReadValue();
-        OnClick?.Invoke(this, new OnClickArgs
-        {
-            mousePos = pos
-        });
+        OnClick?.Invoke(this, EventArgs.Empty);
     }
 
     public Vector3 GetMousePosition()
