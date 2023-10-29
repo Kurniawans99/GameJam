@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class AwakeScript : MonoBehaviour
 {
-    private const string VOLUME_BGM = "volume";
-    private const string VOLUME_SFX = "volume";
+    private const string VOLUME_BGM = "volume_BGM";
+    private const string VOLUME_SFX = "volume_SFX";
 
 
     // Start is called before the first frame update

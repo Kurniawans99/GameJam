@@ -11,7 +11,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip sfxWrong;
 
     public static AudioManager Instance;
-    private const string VOLUME_SFX = "volume";
+    private const string VOLUME_SFX = "volume_SFX";
 
     public Toggle sfxToggle;
 
@@ -19,6 +19,9 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         src.volume = PlayerPrefs.GetFloat(VOLUME_SFX);
+
+
+        sfxToggle.isOn = src.volume > 0.0f;
 
         sfxToggle.onValueChanged.AddListener(OnSFXToggleChanged);
     }

@@ -12,7 +12,7 @@ public class MusicManager : MonoBehaviour
     public AudioSource bgmAudioSource;
     public AudioClip bgmClip;
     public Toggle bgmToggle;
-    private const string VOLUME_BGM = "volume";
+    private const string VOLUME_BGM = "volume_BGM";
   
 
     void Start()
@@ -23,6 +23,9 @@ public class MusicManager : MonoBehaviour
         bgmAudioSource.clip = bgmClip;
 
         bgmAudioSource.volume =PlayerPrefs.GetFloat(VOLUME_BGM);
+
+        bgmToggle.isOn = bgmAudioSource.volume > 0.0f;
+
         bgmAudioSource.Play();
 
 

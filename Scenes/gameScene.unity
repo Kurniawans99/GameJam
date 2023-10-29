@@ -6936,6 +6936,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingsTab
       objectReference: {fileID: 0}
+    - target: {fileID: 9033271143674291515, guid: ef448f237c1cf084e9f989b817fb395b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

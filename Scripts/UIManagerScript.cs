@@ -80,7 +80,7 @@ public class UiManager : MonoBehaviour
     public void OpenOptionsAndPause()
     {
         optionsPanel.SetActive(true);
-        //add pause game
+        PauseGame();
     }
 
     public void closeTabOptions()
@@ -108,6 +108,7 @@ public class UiManager : MonoBehaviour
     }
     public void HomeGame()
     {
+        ResumeGame();
         SceneManager.LoadScene("mainScene");
     }
 
