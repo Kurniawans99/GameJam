@@ -33,7 +33,7 @@ public class MusicManager : MonoBehaviour
 
     void OnMusicToggleChanged(bool isOn)
     {
-        bgmAudioSource.volume = isOn ? 1.0f : 0.0f;
+        bgmAudioSource.volume = isOn ? 0.1f : 0.0f;
 
         PlayerPrefs.SetFloat(VOLUME_BGM, bgmAudioSource.volume);
 

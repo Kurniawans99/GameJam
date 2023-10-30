@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class MarketScript : MonoBehaviour
 {
@@ -37,7 +39,13 @@ public class MarketScript : MonoBehaviour
     private int healCost = 10;
     private int skillCost = 10;
 
-
+    private void Start()
+    {
+        path = "MY";
+        Color imageColor = slotImage.color;
+        imageColor.a = 0.0f; // Set the alpha value to 0.5 for 50% transparency
+        slotImage.color = imageColor;
+    }
 
     public int GetAPPrice()
     {
@@ -92,7 +100,7 @@ public class MarketScript : MonoBehaviour
             coins.DeductCoins(healCost);
 
             // Increase Attack Power
-            tree.Heal(UnityEngine.Random.Range(10, 75));
+            tree.Heal(UnityEngine.Random.Range(100, 250));
 
             decimal changeCost = healCost * 1 / 2;
             healCost = (int)(healCost + Math.Ceiling(changeCost));
@@ -110,7 +118,12 @@ public class MarketScript : MonoBehaviour
     {
         if (decisionSkill)
         {
-           // playerSkill.UpdateSkills(nameSkill);
+            Color imageColor = slotImage.color;
+            imageColor.a = 1.0f; // Set the alpha value to 0.5 for 50% transparency
+            slotImage.color = imageColor;
+
+
+            playerSkill.UpdateSkills(nameSkill);
             slotImage.sprite = newSprite;
             threw();
         }
@@ -169,7 +182,7 @@ public class MarketScript : MonoBehaviour
             }
 
             decisionSkill = true;
-            newSprite = UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite>(path);
+            newSprite = Resources.Load<Sprite>("MySprite");
 
 
             if (newSprite != null)

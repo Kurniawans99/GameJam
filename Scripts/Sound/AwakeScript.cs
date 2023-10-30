@@ -12,7 +12,7 @@ public class AwakeScript : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        PlayerPrefs.SetFloat(VOLUME_BGM, 1f);
+        PlayerPrefs.SetFloat(VOLUME_BGM, 0.2f);
         PlayerPrefs.SetFloat(VOLUME_SFX, 1f);
 
 

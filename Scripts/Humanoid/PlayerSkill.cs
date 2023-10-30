@@ -8,6 +8,7 @@ public class PlayerSkill : MonoBehaviour
     private bool freezeArrow = false;
     private bool poisonArrow = false;
     private bool doubleArrow = false;
+    private bool sniperArrow = false;
     private void Awake()
     {
         Instance = this;
@@ -15,15 +16,20 @@ public class PlayerSkill : MonoBehaviour
 
     public void UpdateSkills(string nameSkill)
     {
-        
+        freezeArrow = false;
+        poisonArrow = false;
+        doubleArrow = false;
+        sniperArrow = false;
+
+
         switch (nameSkill)
         {
             case "doubleArrow":
                 doubleArrow = true;
                 break;
-           /* case "sniperArrow":
+           case "sniperArrow":
                 sniperArrow = true;
-                break;*/
+                break;
             case "freezeArrow":
                 freezeArrow = true;
                 break;
@@ -65,6 +71,15 @@ public class PlayerSkill : MonoBehaviour
         float fireDelay = 0.1f;
         yield return new WaitForSeconds(fireDelay);
         Instantiate(arrow, spawnPos, Quaternion.identity);
+    }
+
+    public bool SniperArrow()
+    {
+        if(sniperArrow == true)
+        {
+            return true;
+        }
+        return false;
     }
 
     public bool IsPoison()

@@ -9,10 +9,13 @@ public class AttackPower : MonoBehaviour
 
     public static event EventHandler OnPowerChanged;
 
+
     public void IncreasePower(int amount)
     {
         power += amount;
+
         OnPowerChanged?.Invoke(this, EventArgs.Empty);
+        //
     }
 
     public int GetAttackPower()

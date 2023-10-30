@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   difficulty: 
   enemyPrefabs:
-  - {fileID: 6619060631091791978, guid: f6e60cd33a54c294e9d3960001ae8634, type: 3}
-  target: {fileID: 8432899458553296001, guid: 921197cb446563d49a312fadc4a8ca39, type: 3}
+  - {fileID: 3048793880147778077, guid: db7b05a3eff990f4494883841be892c2, type: 3}
+  target: {fileID: 8091510026175925814, guid: 61504a71507906e45b028178ee6743a0, type: 3}

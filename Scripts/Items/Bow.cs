@@ -11,9 +11,9 @@ public class Bow : MonoBehaviour
     public static Bow Instance { get; private set; }
     public float fireRate;
     public float fireRateMax = 0.3f;
-    public float speed = 25f;
-    public float damage = 10f;
-    public float burnDamage = 2f;
+    [HideInInspector] public float speed = 50f;
+    [HideInInspector] public float damage = 25f;
+   [HideInInspector] public float burnDamage = 5f;
     public float burnDuration = 2f;
 
     private void Awake()
@@ -21,6 +21,17 @@ public class Bow : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        AttackPower.OnPowerChanged += OnPowerChanged; // Subscribe to the event
+
+    }
+
+    private void OnPowerChanged(object sender, EventArgs e)
+    {
+        // Increase the damage by 10 when AttackPower changes
+        damage += 2;
+    }
     private void Update()
     {
         fireRate += Time.deltaTime;

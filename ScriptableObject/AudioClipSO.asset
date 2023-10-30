@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea6d7746c2f303f4fb04b22fa8a6a507, type: 3}
   m_Name: AudioClipSO
   m_EditorClassIdentifier: 
-  fireShoot: {fileID: 0}
-  arrowHit: {fileID: 0}
+  fireShoot: {fileID: 8300000, guid: 50e863fe6c4b2124fac184004286b187, type: 3}
+  arrowHit: {fileID: 8300000, guid: d7c041e511344fc47a50f45584a85aeb, type: 3}

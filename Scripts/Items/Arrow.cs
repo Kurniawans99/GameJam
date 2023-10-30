@@ -52,6 +52,10 @@ public class Arrow : MonoBehaviour
             OnEnemyHit?.Invoke(this, EventArgs.Empty);
             enemy.TakenDamage(damage);
             SkillActive(PlayerSkill.Instance, enemy);
+            if (PlayerSkill.Instance.SniperArrow())
+            {
+                return;
+            }
             Destroy(gameObject);
         }
     }

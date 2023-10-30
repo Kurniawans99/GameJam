@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+
 using UnityEngine.SceneManagement;
 
 public class UiManager : MonoBehaviour
@@ -9,6 +11,7 @@ public class UiManager : MonoBehaviour
     public GameObject optionsPanel;
     public GameObject GatchaPanel;
     public GameObject endTabPanel;
+
 
     [SerializeField]  public MarketScript market;
 
@@ -27,6 +30,8 @@ public class UiManager : MonoBehaviour
         {
             GatchaPanel.SetActive(false);
             endTabPanel.SetActive(false);
+
+
 
         }
 
@@ -96,6 +101,7 @@ public class UiManager : MonoBehaviour
     public void ReplayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        ResumeGame();
     }
     public void ResumeGame()
     {

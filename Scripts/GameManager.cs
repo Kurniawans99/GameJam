@@ -26,6 +26,15 @@ public class GameManager : MonoBehaviour
 
 
 
+    private void Start()
+    {
+        Tower.Instance.OnTreeDeath += Tower_Death;
+    }
+
+    private void Tower_Death(object sender, EventArgs e)
+    {
+        EndGame();
+    }
 
     void Update()
     {

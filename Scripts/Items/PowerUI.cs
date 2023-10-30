@@ -17,5 +17,6 @@ public class PowerUI : MonoBehaviour
     private void Power_OnChange(object sender, EventArgs e)
     {
         apText.text = attackPower.GetAttackPower().ToString();
+        Debug.Log("test");
     }
 }

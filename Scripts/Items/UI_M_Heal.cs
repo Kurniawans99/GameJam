@@ -12,7 +12,7 @@ public class UI_M_Heal : MonoBehaviour
     private void Start()
     {
         priceText.text = price.GetHealPrice().ToString() + " C";
-        MarketScript.OnPriceSkillChanged += priceHeal_OnChange;
+        MarketScript.OnPriceHealChanged += priceHeal_OnChange;
     }
 
     private void priceHeal_OnChange(object sender, EventArgs e)

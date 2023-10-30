@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     public static Player Instance { get; private set; }
     [HideInInspector] public Vector3 targetPos;
-    [SerializeField] private GameInput gameInput;
+    [SerializeField] private GameInput gameInput; 
     [SerializeField] private Camera cam;
     private const string PLAYER_SHOOT = "Shoot";
     private Animator animator;
