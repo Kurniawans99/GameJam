@@ -20,7 +20,7 @@ public class MarketScript : MonoBehaviour
 
     [SerializeField] public Image slotImage;
 
-    string path;
+    [SerializeField]  public Sprite[] listSprite;
     private string nameSkill;
     private Sprite newSprite;
     private bool decisionSkill;
@@ -41,7 +41,6 @@ public class MarketScript : MonoBehaviour
 
     private void Start()
     {
-        path = "MY";
         Color imageColor = slotImage.color;
         imageColor.a = 0.0f; // Set the alpha value to 0.5 for 50% transparency
         slotImage.color = imageColor;
@@ -142,7 +141,7 @@ public class MarketScript : MonoBehaviour
 
     public void BuySkill()
     {
-
+        int imageNum= 0;
         int playerCoins = coins.GetCoin();
 
         if (playerCoins >= skillCost)
@@ -159,30 +158,30 @@ public class MarketScript : MonoBehaviour
             {
                 case >= 1 and <= 10: // 10% chance
                     nameSkill = "doubleArrow";
-                    path = "Assets/AssetS/2D/doubleArrow.png";
+                    imageNum = 0;
                     break;
                 case >= 11 and <= 40: // 30% chance (increased from 30)
                     nameSkill = "sniperArrow";
-                    path = "Assets/AssetS/2D/sniperArrow.png";
+                    imageNum = 1;
                     break;
                 case >= 41 and <= 70: // 30% chance
                     nameSkill = "freezeArrow";
-                    path = "Assets/AssetS/2D/freezeArrow.png";
+                    imageNum = 2;
                     break;
                 case >= 71 and <= 85: // 15% chance
                     nameSkill = "poisonArrow";
-                    path = "Assets/AssetS/2D/poisonArrow.png";
+                    imageNum = 3;
                     break;
                 case >= 86 and <= 100: // 15% chance
                     nameSkill = "firerateArrow";
-                    path = "Assets/AssetS/2D/firerateArrow.png";
+                    imageNum = 4;
                     break;
                 default:
                     break;
             }
 
             decisionSkill = true;
-            newSprite = Resources.Load<Sprite>("MySprite");
+            newSprite = listSprite[imageNum];
 
 
             if (newSprite != null)
