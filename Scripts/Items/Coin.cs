@@ -8,6 +8,10 @@ public class Coin : MonoBehaviour
 
     private int playerCoin = 100;
     public static event EventHandler OnCoinChanged;
+    public static void ResetStaticData()
+    {
+        OnCoinChanged = null;
+    }
 
     private void Start()
     {
@@ -29,7 +33,7 @@ public class Coin : MonoBehaviour
     }
     public void DeductCoins(int amount)
     {
-        
+
         playerCoin -= amount;
         OnCoinChanged?.Invoke(this, EventArgs.Empty);
 

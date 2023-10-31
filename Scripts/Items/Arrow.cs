@@ -7,6 +7,11 @@ using UnityEngine.AI;
 public class Arrow : MonoBehaviour
 {
     public static event EventHandler OnEnemyHit;
+    public static void ResetStaticData()
+    {
+        OnEnemyHit = null;
+    }
+
     private Rigidbody rb;
     private float speed;
     private float damage;
@@ -58,6 +63,7 @@ public class Arrow : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 
 
 }

@@ -9,7 +9,10 @@ public class AttackPower : MonoBehaviour
 
     public static event EventHandler OnPowerChanged;
 
-
+    public static void ResetStaticData()
+    {
+        OnPowerChanged = null;
+    }
     public void IncreasePower(int amount)
     {
         power += amount;

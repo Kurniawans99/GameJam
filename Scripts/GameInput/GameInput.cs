@@ -21,6 +21,14 @@ public class GameInput : MonoBehaviour
         playerInput.Player.Click.performed += PlayerInput_Click;
     }
 
+    private void OnDestroy()
+    {
+        playerInput.Player.Click.performed -= PlayerInput_Click;
+
+        playerInput.Dispose();
+
+    }
+
     private void PlayerInput_Click(InputAction.CallbackContext context)
     {
         OnClick?.Invoke(this, EventArgs.Empty);

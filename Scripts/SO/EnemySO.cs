@@ -7,5 +7,4 @@ public class EnemySO : ScriptableObject
 {
     public string difficulty;
     public Transform[] enemyPrefabs;
-    public Transform target;
 }

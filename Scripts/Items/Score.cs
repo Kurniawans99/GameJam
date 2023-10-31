@@ -9,6 +9,10 @@ public class Score : MonoBehaviour
 
     public static event EventHandler OnScoreChanged;
 
+    public static void ResetStaticData()
+    {
+        OnScoreChanged = null;
+    }
     private void Start()
     {
         Enemy.OnEnemyDeath += Enemy_OnDeath;

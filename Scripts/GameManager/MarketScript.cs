@@ -20,7 +20,7 @@ public class MarketScript : MonoBehaviour
 
     [SerializeField] public Image slotImage;
 
-    [SerializeField]  public Sprite[] listSprite;
+    [SerializeField] public Sprite[] listSprite;
     private string nameSkill;
     private Sprite newSprite;
     private bool decisionSkill;
@@ -137,11 +137,11 @@ public class MarketScript : MonoBehaviour
         newSprite = null;
     }
 
-  
+
 
     public void BuySkill()
     {
-        int imageNum= 0;
+        int imageNum = 0;
         int playerCoins = coins.GetCoin();
 
         if (playerCoins >= skillCost)
@@ -194,7 +194,7 @@ public class MarketScript : MonoBehaviour
                 Debug.LogWarning("Failed to load sprite.");
             }
             uiManager.OpenGatchaP();
-      
+
             decimal changeCost = skillCost * 1 / 2;
             skillCost = (int)(skillCost + 10 + Math.Ceiling(changeCost));
             OnPriceSkillChanged?.Invoke(this, EventArgs.Empty);

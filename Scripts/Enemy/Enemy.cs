@@ -7,6 +7,10 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     public static event EventHandler OnEnemyDeath;
+    public static void ResetStaticData()
+    {
+        OnEnemyDeath = null;
+    }
     public event EventHandler OnHit;
     public Transform target;
 
