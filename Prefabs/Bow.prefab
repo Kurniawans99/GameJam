@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 7715382292771877218}
   - component: {fileID: 2673821613692866831}
   - component: {fileID: 3124249924672138856}
-  - component: {fileID: 1904978278187862349}
+  - component: {fileID: 6455470369956234871}
   m_Layer: 0
   m_Name: Bow
   m_TagString: Untagged
@@ -73,7 +73,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7403926045261021610}
-  m_Mesh: {fileID: 6239881831769578202, guid: 0eaeb7167f9b4354fb5c37ad2eae360f, type: 3}
+  m_Mesh: {fileID: 6239881831769578202, guid: 71ea393adfa83874e89f4175fad57a3a, type: 3}
 --- !u!23 &3124249924672138856
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -94,9 +94,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8538422159488810935, guid: 0eaeb7167f9b4354fb5c37ad2eae360f, type: 3}
-  - {fileID: -6922793697723135513, guid: 0eaeb7167f9b4354fb5c37ad2eae360f, type: 3}
-  - {fileID: 4874126678125670354, guid: 0eaeb7167f9b4354fb5c37ad2eae360f, type: 3}
+  - {fileID: 8538422159488810935, guid: 71ea393adfa83874e89f4175fad57a3a, type: 3}
+  - {fileID: -6922793697723135513, guid: 71ea393adfa83874e89f4175fad57a3a, type: 3}
+  - {fileID: 4874126678125670354, guid: 71ea393adfa83874e89f4175fad57a3a, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -118,7 +118,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1904978278187862349
+--- !u!114 &6455470369956234871
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,11 +131,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpawn: {fileID: 2544927153762497413}
-  projectile: {fileID: 2355772121691170709, guid: b7904485db52c3f42bd2844c4f1260f3,
-    type: 3}
+  projectile: {fileID: 0}
   fireRate: 0
   fireRateMax: 0.3
-  speed: 25
-  damage: 10
-  burnDamage: 2
+  speed: 50
+  damage: 25
+  burnDamage: 5
   burnDuration: 2
