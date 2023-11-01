@@ -7,7 +7,7 @@ public class PlayerSkill : MonoBehaviour
     [HideInInspector] public static PlayerSkill Instance { get; private set; }
     private bool freezeArrow = false;
     private bool poisonArrow = false;
-    private bool doubleArrow = false;
+    private bool doubleArrow = true;
     private bool sniperArrow = false;
     private void Awake()
     {
@@ -65,12 +65,17 @@ public class PlayerSkill : MonoBehaviour
 
     }
 
-    public IEnumerator DoubleArrow(Vector3 spawnPos, Transform arrow)
+    public IEnumerator DoubleArrow(Transform spawnPos, Transform projectile)
     {
         if (doubleArrow == false) yield break;
+
         float fireDelay = 0.1f;
+        Vector3 pos = spawnPos.position;
+
         yield return new WaitForSeconds(fireDelay);
-        Instantiate(arrow, spawnPos, Quaternion.identity);
+        Transform newArrow = Instantiate(projectile, pos, spawnPos.rotation);
+        newArrow.transform.localScale = spawnPos.localScale;
+
     }
 
     public bool SniperArrow()

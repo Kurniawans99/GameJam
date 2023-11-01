@@ -8,7 +8,7 @@ public class TowerUI : MonoBehaviour
 {
     [SerializeField] private Image bar;
 
-     private void Start()
+    private void Start()
     {
         Tower.Instance.OnTreeHit += Tower_OnHit;
         bar.fillAmount = 1f;
@@ -16,7 +16,6 @@ public class TowerUI : MonoBehaviour
 
     private void Tower_OnHit(object sender, Tower.OnTreeHitEventArgs e)
     {
-        Debug.Log(e.currentHealth);
-        bar.fillAmount = Tower.Instance.health/Tower.Instance.GetMaxHealth();
+        bar.fillAmount = Tower.Instance.health / Tower.Instance.GetMaxHealth();
     }
 }

@@ -25,6 +25,7 @@ public class Slime : Enemy
 
     private void Update()
     {
+        if (target == null) return;
         if (state == State.Chase)
         {
             agent.destination = target.position;

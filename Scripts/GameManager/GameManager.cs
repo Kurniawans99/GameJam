@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour
 {
     private float playTime; // Variable to store the play time in seconds
     public static event Action<int, string, int> OnGameEnded; // Update event to include parameters
+    public static void ResetStaticData()
+    {
+        OnGameEnded = null;
+    }
     public Score score;
     private const string HIGHSCORE = "HighScore";
 
@@ -53,7 +57,7 @@ public class GameManager : MonoBehaviour
         string playTimeFormatted = GetPlayTimeFormatted();
         int currentScore = score.GetScore();
         int highScore = PlayerPrefs.GetInt(HIGHSCORE);
-
+        Time.timeScale = 0f;
         // Invoke the event with the parameters
 
         OnGameEnded?.Invoke(currentScore, playTimeFormatted, highScore);
@@ -61,7 +65,6 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt(HIGHSCORE, currentScore);
         }
-        Debug.Log("its run");
     }
 }
 

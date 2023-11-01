@@ -7,16 +7,15 @@ public class Player : MonoBehaviour
 {
     public static Player Instance { get; private set; }
     [HideInInspector] public Vector3 targetPos;
-    [SerializeField] private GameInput gameInput; 
+    [SerializeField] private GameInput gameInput;
     [SerializeField] private Camera cam;
+    public event EventHandler OnPlayerShoot;
     private const string PLAYER_SHOOT = "Shoot";
-    private Animator animator;
 
 
     private void Awake()
     {
         Instance = this;
-        animator = GetComponent<Animator>();
     }
     private void Start()
     {
@@ -41,7 +40,7 @@ public class Player : MonoBehaviour
 
     private void GameInputOnClick(object sender, EventArgs e)
     {
-        animator.SetTrigger(PLAYER_SHOOT);
+        OnPlayerShoot?.Invoke(this, EventArgs.Empty);
 
     }
     public void Fire()

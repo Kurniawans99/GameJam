@@ -48,7 +48,7 @@ public class Bow : MonoBehaviour
             arrow.SetParent(null);
             if (PlayerSkill.Instance.IsDoubleArrow())
             {
-                StartCoroutine(PlayerSkill.Instance.DoubleArrow(transform.position, projectile));
+                StartCoroutine(PlayerSkill.Instance.DoubleArrow(arrow, projectile));
             }
             fireRate = 0f;
         }
